@@ -11,5 +11,13 @@ exports.flowControlAnswers = {
     // otherwise the function should return the number, or false if no number
     // was provided or the value provided is not a number
 
+    if (typeof num === 'undefined' || Number.isNaN(+num)) {
+      return false;
+    }
+    var out = '';
+    if (num % 3 === 0) out += 'fizz';
+    if (num % 5 === 0) out += 'buzz';
+    if (out === '') out = num;
+    return out;
   }
 };
