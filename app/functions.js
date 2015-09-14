@@ -52,6 +52,15 @@ exports.functionsAnswers = {
   },
 
   curryIt : function(fn) {
-
+    var arity = fn.length;
+    return function curry (arg) {
+      if (arity > 1) {
+        arity--;
+        return curry;
+      }
+      else {
+        return ;
+      }
+    }.bind(this);
   }
 };
