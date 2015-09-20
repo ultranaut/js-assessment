@@ -2,12 +2,7 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.functionsAnswers = {
   argsAsArray : function(fn, arr) {
-      // var sayIt = function(greeting, name, punctuation) {
-      //   sayItCalled = true;
-      //   return greeting + ', ' + name + (punctuation || '!');
-      // };
     return fn.apply(this, arr);
-
   },
 
   speak : function(fn, obj) {
@@ -27,7 +22,7 @@ exports.functionsAnswers = {
 
   },
 
-  partial : function(fn, str1, str2) {
+  partial : function(fn) {
     var args = Array.prototype.slice.call(arguments).slice(1);
     return function () {
       var myargs = args.concat(Array.prototype.slice.call(arguments));
@@ -53,14 +48,14 @@ exports.functionsAnswers = {
 
   curryIt : function(fn) {
     var arity = fn.length;
+    var acc = [];
     return function curry (arg) {
+      acc.push(arg);
       if (arity > 1) {
         arity--;
         return curry;
       }
-      else {
-        return ;
-      }
+      return fn.apply(this, acc) ;
     }.bind(this);
   }
 };
